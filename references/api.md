@@ -30,38 +30,73 @@ Response:
 ### Create Chat
 POST /im/v1/chats
 
-Parameters:
-- name: Chat name (required)
-- description: Chat description
-- chat_mode: "group" for multi-person
-- chat_type: "private" (internal) or "public"
-- owner_id: Owner's open_id
-
 ### Add Member
 POST /im/v1/chats/{chat_id}/members
-
-Parameters:
-- member_list: Array of {member_id, member_type}
-- member_type: "user" or "bot"
 
 ### List Members
 GET /im/v1/chats/{chat_id}/members
 
-### Update Chat
-PUT /im/v1/chats/{chat_id}
-
-## Message APIs
-
 ### Send Message
 POST /im/v1/messages?receive_id_type=chat_id
 
-Parameters:
-- receive_id: Chat ID
-- msg_type: "text", "post", etc.
-- content: JSON formatted message content
+## Calendar APIs
+
+### Create Event
+POST /calendar/v4/calendars/primary/events
+
+### List Events
+GET /calendar/v4/calendars/primary/events?start_time=xxx&end_time=xxx
+
+### Delete Event
+DELETE /calendar/v4/calendars/primary/events/{event_id}
+
+## Task APIs
+
+### Create Task
+POST /task/v2/tasks
+
+### List Tasks
+GET /task/v2/tasks
+
+### Update Task
+PATCH /task/v2/tasks/{task_id}
+
+## Document APIs
+
+### Create Document
+POST /docx/v1/documents
+
+### Get Document
+GET /docx/v1/documents/{document_id}
+
+### Delete Document
+DELETE /docx/v1/documents/{document_id}
+
+## Drive APIs
+
+### Upload File
+POST /drive/v1/files/upload_all
+
+### Download File
+GET /drive/v1/files/{file_token}/download
+
+### List Files
+GET /drive/v1/files
+
+## Contact APIs
+
+### Get User by Email
+GET /contact/v3/users/batch_get_id?emails=xxx
+
+### Get User Info
+GET /contact/v3/users/{user_id}
+
+### List Departments
+GET /contact/v3/departments
 
 ## Error Codes
 
 - 99991661: Invalid token
 - 99991663: Token expired
 - 99992402: Missing required field
+- 99991668: Insufficient permissions
