@@ -1,73 +1,37 @@
 # Feishu Operations Skill
 
-This skill provides Feishu (Lark) group chat and messaging operations for OpenClaw agents.
+For OpenClaw agents - Feishu group chat and messaging automation.
 
 ## What This Skill Does
 
-- Create and manage Feishu group chats
-- Add members to group chats
-- Send messages to groups or users
-- Query group information and member lists
+Automates Feishu (Lark) operations:
+- Create and manage group chats
+- Add/remove members
+- Send messages
+- Query group information
 
-## When to Use This Skill
+## When to Use
 
-Use this skill when you need to:
-- Create a new group chat for team discussions
-- Add users to an existing group chat
-- Send notifications or messages via Feishu
-- Manage group chat settings
+Trigger this skill when user asks to:
+- "Create a Feishu group"
+- "Add someone to the group"
+- "Send message via Feishu"
+- Any Feishu IM operations
 
-## Quick Start
+## Setup
 
-### 1. Set Up Authentication
+1. Ensure environment variables are set:
+   - `FEISHU_APP_ID`
+   - `FEISHU_APP_SECRET`
 
-```bash
-export FEISHU_APP_ID="your_app_id"
-export FEISHU_APP_SECRET="your_app_secret"
-```
+2. Get token and run commands as shown in SKILL.md
 
-Get a token:
-```bash
-TOKEN=$(python3 scripts/get_token.py)
-export FEISHU_TOKEN=$TOKEN
-```
+## For Skill Developers
 
-### 2. Create a Group Chat
+This skill follows OpenClaw skill standards:
+- Progressive disclosure (details in references/)
+- Scripts for deterministic operations
+- No hardcoded credentials
+- Environment-based configuration
 
-```bash
-python3 scripts/create_chat.py --name "Group Name" --description "Description"
-```
-
-### 3. Add Members
-
-```bash
-python3 scripts/add_member.py --chat-id CHAT_ID --user-id USER_OPEN_ID
-```
-
-## Important Notes
-
-- **Never hardcode credentials** in scripts or SKILL.md
-- Always use environment variables for sensitive information
-- Tokens expire in ~2 hours, refresh as needed
-- The bot must have proper permissions in Feishu app settings
-
-## File Structure
-
-```
-feishu-ops/
-├── SKILL.md              # Main skill instructions
-├── README.md             # This file - for other OpenClaw agents
-├── scripts/              # Executable scripts
-│   ├── get_token.py
-│   ├── create_chat.py
-│   └── add_member.py
-└── references/           # Detailed documentation
-    ├── api.md
-    └── patterns.md
-```
-
-## References
-
-- Feishu Open API Docs: https://open.feishu.cn/document/home/index
-- See `references/api.md` for detailed API documentation
-- See `references/patterns.md` for common usage patterns
+See SKILL.md for usage examples.
